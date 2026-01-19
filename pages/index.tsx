@@ -7,6 +7,7 @@ import {
   SelectChangeEvent,
   MenuItem,
   Button,
+  InputLabel,
 } from "@mui/material";
 import * as yup from "yup";
 import AppBar from "@mui/material/AppBar";
@@ -122,8 +123,8 @@ export default function HomePage() {
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <Grid container spacing={2} sx={{ mt: 2, mb: 2 }}>
-        <Grid size={6}>
+      <Grid container spacing={2} sx={{ mt: 2, mb: 2, px: { xs: 1, sm: 2 } }}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Typography
             variant="h4"
             component="h1"
@@ -133,7 +134,7 @@ export default function HomePage() {
           </Typography>
           <Paper sx={{ padding: 2 }}>
             <Grid container spacing={2} sx={{ mt: 2, mb: 2 }}>
-              <Grid size={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="First Name"
@@ -144,7 +145,7 @@ export default function HomePage() {
                   helperText={errors.name}
                 ></TextField>
               </Grid>
-              <Grid size={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Last Name"
@@ -178,8 +179,8 @@ export default function HomePage() {
             </FormControl>
 
             <Grid container spacing={2}>
-              <Grid size={6}>
-                <FormControl>
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <FormControl error={!!errors.gender}>
                   <FormLabel id="demo-radio-buttons-group-label">
                     Gender
                   </FormLabel>
@@ -206,9 +207,12 @@ export default function HomePage() {
                       label="Other"
                     />
                   </RadioGroup>
+                  <Typography color="error" variant="caption">
+                    {errors.gender}
+                  </Typography>
                 </FormControl>
               </Grid>
-              <Grid size={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <FormControl>
                   <FormLabel id="demo-radio-buttons-group-label">
                     Hobby
@@ -257,16 +261,22 @@ export default function HomePage() {
                   </FormGroup>
                 </FormControl>
               </Grid>
-              <Select<string>
-                value={status}
-                label="Age"
-                onChange={handleSelect}
-                fullWidth
-              >
-                <MenuItem value="single">Single</MenuItem>
-                <MenuItem value="married">Married</MenuItem>
-                <MenuItem value="divorce">Divorce</MenuItem>
-              </Select>
+              <Grid size={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="status-select-label">Status</InputLabel>
+                  <Select<string>
+                    labelId="status-select-label"
+                    value={status}
+                    label="Status"
+                    onChange={handleSelect}
+                  >
+                    <MenuItem value="single">Single</MenuItem>
+                    <MenuItem value="married">Married</MenuItem>
+                    <MenuItem value="divorce">Divorce</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid size={12}>
               <TextField
                 label="Note"
                 variant="outlined"
@@ -276,6 +286,7 @@ export default function HomePage() {
                   setNote(e.target.value);
                 }}
               ></TextField>
+              </Grid>
             </Grid>
             <Box
               sx={{
@@ -294,21 +305,21 @@ export default function HomePage() {
             </Box>
           </Paper>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           {submitList.map((item, index) => (
             <Paper key={index} sx={{ padding: 2 }}>
               <Typography fontWeight="bold" variant="h6">
                 User: {index + 1}
               </Typography>
               <Grid container spacing={2}>
-                <Grid size={6}>
+                <Grid size={{ xs: 12, sm: 6 }}>
                   <Typography>
                     Name: {item.name} {item.last}
                   </Typography>
                   <Typography>Status: {item.status}</Typography>
                   <Typography>Gender: {item.gender}</Typography>
                 </Grid>
-                <Grid size={6}>
+                <Grid size={{ xs: 12, sm: 6 }}>
                   <Typography>Email: {item.email}</Typography>
                   <Typography>Hobby: {item.hobbies.join(", ")}</Typography>
                   <Typography>Note: {item.note}</Typography>

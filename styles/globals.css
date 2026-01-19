@@ -3,9 +3,6 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -23,4 +20,52 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive adjustments for iPhone 17 and mobile devices */
+@media screen and (max-width: 430px) {
+  /* iPhone 17 Pro Max width */
+  h1, h4 {
+    font-size: 1.5rem !important;
+  }
+  
+  .MuiPaper-root {
+    padding: 12px !important;
+  }
+  
+  .MuiTypography-h6 {
+    font-size: 1.1rem !important;
+  }
+  
+  .MuiFormControlLabel-label {
+    font-size: 0.9rem !important;
+  }
+  
+  .MuiButton-root {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1, h4 {
+    font-size: 1.75rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  .MuiTextField-root {
+    margin-bottom: 8px;
+  }
+  
+  .MuiFormGroup-root {
+    flex-direction: column !important;
+  }
+  
+  .MuiRadioGroup-root {
+    flex-direction: column !important;
+  }
 }
